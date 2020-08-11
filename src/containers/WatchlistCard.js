@@ -3,7 +3,7 @@ import {Card, CardImg} from 'react-bootstrap'
 
 
 const WatchlistCard = (props) => {
-  console.log(props)
+  // console.log(props)
   return(
     <Card style={{ width: '10rem'}} className="box">
       <CardImg src={props.movie.poster} alt={props.movie.title}/>

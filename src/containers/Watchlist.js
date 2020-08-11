@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap'
 
 
 const Watchlist = (props) => {
-  console.log(props.user.watchlist.watchlist_movies)
+  // console.log(props.user.watchlist.watchlist_movies)
   
   const renderWatchlistCards = () => {
     if (props.user.watchlist.watchlist_movies) {
@@ -21,7 +21,7 @@ const Watchlist = (props) => {
 }
   
   return(
-    <div className="fixed-bottom">
+    <div className="sticky-bottom">
       <h2>{props.user.username}'s Watchlist</h2>
     <Container>
        {renderWatchlistCards()}

@@ -4,7 +4,7 @@ import {Container} from 'react-bootstrap'
 import Review from '../components/Review'
 
 const ReviewContainer = (props) => {
-  console.log(props)
+  // console.log(props)
   
   const renderReviews = () => {
     if (props.user.reviews) {
@@ -19,7 +19,7 @@ const ReviewContainer = (props) => {
   return(
     <div>
       <h2>Reviews</h2>
-      <Container>
+      <Container fluid>
         {renderReviews()}
       </Container>
     </div>

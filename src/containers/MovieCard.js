@@ -1,0 +1,32 @@
+import React from 'react'
+import {Card, CardImg} from 'react-bootstrap'
+import {connect} from 'react-redux'
+
+
+const MovieCard = (props) => {
+  // console.log(props)
+
+  const clickMovieDetails = (imdbID) => {
+    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=4d6b4f28`)
+      .then(resp => resp.json())
+      .then(movie => props.renderMovieDetails(movie))
+    }
+  
+  return(
+    <Card style={{ width: '18rem'}} className="box">
+      <CardImg src={props.movie.Poster} alt={props.movie.Title}/>
+      <Card.Title>{props.movie.Title}</Card.Title>
+      <Card.Body>{props.movie.Year}</Card.Body>
+      <Card.Footer><button onClick={()=>clickMovieDetails(props.movie.imdbID)}>Details</button></Card.Footer>
+    </Card>
+  )
+}
+
+  const mdp = dispatch => {
+    return{
+      renderMovieDetails: (movie) => dispatch({ type: "SELECT_MOVIE", selectedMovie: movie })
+    }
+  }
+
+
+export default connect(null,mdp)(MovieCard)
