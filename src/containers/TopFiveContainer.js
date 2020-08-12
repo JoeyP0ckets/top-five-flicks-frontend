@@ -1,10 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { connect } from 'react-redux'
-import { Container} from 'react-bootstrap'
+import { Container, Button} from 'react-bootstrap'
 import TopFive from '../components/TopFive'
+import TopFiveForm from '../components/TopFiveForm'
 
 const TopFiveContainer = (props) => {
   // console.log(props.user.top_fives)
+  
+  const [isToggled, setToggled] = useState(false)
+
+  const toggleTopFiveReview = () => setToggled(!isToggled)
   
   const renderTopFive = () => {
     if (props.user.top_fives) {
@@ -24,7 +29,9 @@ const TopFiveContainer = (props) => {
         <h1>Top Fives</h1>
       <Container>
         {renderTopFive()}
+        {isToggled ? <TopFiveForm/> : null}
       </Container>
+      <Button onClick={() => toggleTopFiveReview()}>Create Top Five</Button>
     </div>
   )
 }

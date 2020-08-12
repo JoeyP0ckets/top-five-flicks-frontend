@@ -13,7 +13,7 @@ class Profile extends React.Component{
   }
   
    fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/users/58`)
+    fetch(`http://localhost:3000/api/v1/users/77`)
       .then(resp => resp.json())
       .then(userData => this.props.renderUser(userData) )
    }
@@ -24,7 +24,6 @@ class Profile extends React.Component{
     const {user} = this.props
   return(
     <div>
-      I'm the Profile Page
       <h2>Welcome {user.username}</h2>
       {user.top_fives ? <TopFiveContainer /> : null}
       {user.reviews ? <ReviewContainer /> : null}

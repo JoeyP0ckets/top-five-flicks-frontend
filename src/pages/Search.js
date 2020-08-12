@@ -18,22 +18,23 @@ class Search extends React.Component {
   
   render () {
     console.log(this.props)
-  return (
-    <div>
-      <form onSubmit={e => this.searchByTitle(e)}>
-        <input
-          type="text"
-          placeholder="Enter Title"
-          maxLength="50"
-          name="title"        
-        />
-        <button type="submit">Search Movies</button>
-      </form>
-      {this.props.searchedOmdb ? <MovieContainer /> : null}
-   </div>
-  )
+    return (
+      <div>
+        <form onSubmit={e => this.searchByTitle(e)}>
+          <input
+            type="text"
+            placeholder="Enter Title"
+            maxLength="50"
+            name="title"        
+          />
+          <button type="submit">Search Movies</button>
+        </form>
+        {this.props.searchedOmdb ? <MovieContainer /> : null}
+      </div>
+    )
+  }
 }
-}
+
 const msp = state => {
   return {
     searchedOmdb: state.searchedOmdb
