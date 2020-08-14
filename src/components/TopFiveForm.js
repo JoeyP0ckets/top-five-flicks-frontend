@@ -29,6 +29,9 @@ class TopFiveForm extends React.Component {
     })
       .then(resp => resp.json())
       .then(newTopFive => this.props.renderTopFive(newTopFive))
+      .then(newTopFive => this.props.addToAllTopFives(newTopFive))
+      // console.log(newTopFive)
+      // this.props.addToAllTopFives(newTopFive)
       e.target.reset()
       
 }
@@ -65,7 +68,8 @@ alertMe() {
 
 const mdp = dispatch => {
   return{
-    renderTopFive: (newTopFive) => dispatch({ type: "ADD_TOP_FIVE", newTopFive: newTopFive})
+    renderTopFive: (newTopFive) => dispatch({ type: "ADD_TOP_FIVE", newTopFive: newTopFive}),
+    addToAllTopFives: (newTopFive) => dispatch({ type: "ADD_MAIN_TOP_FIVE", newTopFive: newTopFive})
   }
 }
 

@@ -10,7 +10,7 @@ class Search extends React.Component {
   searchByTitle = e => {
     e.preventDefault() 
     const title = e.target.title.value.replace(" ", "+")
-    fetch(`http://www.omdbapi.com/?s=${title}&apikey=4d6b4f28`)
+    fetch(`http://www.omdbapi.com/?s=${title}&apikey=`)
       .then(resp => resp.json())
       .then(searchedData => this.props.filteredSearch(searchedData))
       e.target.reset()
@@ -50,7 +50,6 @@ const mdp = dispatch => {
     filteredSearch: (searchedData) => dispatch({ type: "SEARCHED_OMDB", searchedOmdb: searchedData})
   }
 }
-    //  renderUser = (user) => ({type: "RENDER_USER", payload: {value: user}})
 
 
 export default connect(msp, mdp)(Search)

@@ -12,7 +12,7 @@ const MovieShow = (props) => {
   const toggleReview = () => setToggled(!isToggled)
   
   const goBack = () => {
-    console.log("I was clicked")
+    props.unselectMovie()
   }
 
   const addToWatchlist = (selectedMovie) => {
@@ -24,7 +24,7 @@ const MovieShow = (props) => {
       year: selectedMovie.Year,
       watchlist_id: 75
     }
-    console.log(watchlist_movie)
+    alert("Movie Added to Watchlist!")
     fetch(`http://localhost:3000/api/v1/watchlist_movies`, {
       method: "POST",
       headers: {
@@ -36,10 +36,10 @@ const MovieShow = (props) => {
       }) 
     })
     .then(resp => resp.json())
-    .then(newWatchlistMovie => this.props.renderWatchlistMovie(newWatchlistMovie))
+    .then(newWatchlistMovie => props.renderWatchlistMovie(newWatchlistMovie))
 
   }
-    const {Director, Title, Poster, Plot, Actors, Rated, Ratings, Genre, Released, Runtime, Writer} = props.selectedMovie
+    const {Director, Title, Poster, Plot, Actors, Rated, Genre, Released, Runtime, Writer} = props.selectedMovie
   return(
     <Container fluid>
     <h1>{Title}</h1>
@@ -74,8 +74,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    renderWatchlistMovie: (newWatchlistMovie) => dispatch({ type:"ADD_TO_WATCHLIST", newWatchlistMovie: newWatchlistMovie})
-    // unselectMovie: (null) => dispatch({ type:"UNSELECT_MOVIE"})
+    renderWatchlistMovie: (newWatchlistMovie) => dispatch({ type:"ADD_TO_WATCHLIST", newWatchlistMovie: newWatchlistMovie}),
+    unselectMovie: () => dispatch({ type:"DESELECT_MOVIE"})
   }
 }
 

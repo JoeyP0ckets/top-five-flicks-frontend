@@ -41,6 +41,7 @@ class TopFive extends React.Component {
  const mdp = dispatch => {
   return{
     renderTopFives: (allFives) => dispatch({ type: "RENDER_TOP_FIVES", allFives: allFives})
+    
   }
 }
 

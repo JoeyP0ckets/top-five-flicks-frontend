@@ -1,12 +1,20 @@
 import React from "react"
 import {Card, CardImg} from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 
 const WatchlistCard = (props) => {
   // console.log(props)
 
-  const deleteFromWatchlist = () => {
-    console.log("clicked")
+  const deleteFromWatchlist = (id) => {
+    fetch(`http://localhost:3000/api/v1/watchlist_movies/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+         Accept: "application/json"
+      }
+    })
+    props.delete(id)
   } 
   return(
     <Card style={{ width: '10rem'}} className="box">
@@ -14,12 +22,18 @@ const WatchlistCard = (props) => {
       <Card.Title>{props.movie.title}</Card.Title>
       <Card.Body>
         {props.movie.year}
-        <p><button onClick={deleteFromWatchlist}>Delete</button></p>
+        <p><button onClick={() => deleteFromWatchlist(props.movie.id)}>Remove</button></p>
       </Card.Body>
 
     </Card>
   )
 }
 
-export default WatchlistCard
+const mdp = dispatch => {
+  return {
+    delete: (id) => dispatch({ type:"REMOVE_FROM_WATCHLIST", id: id})
+  }
+}
+
+export default connect(null,mdp)(WatchlistCard)
 

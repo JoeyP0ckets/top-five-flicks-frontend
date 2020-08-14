@@ -1,9 +1,21 @@
 import React from "react"
 import { Card } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 const TopFive = (props) => {
 
-  const {category, titleOne, titleTwo, titleThree, titleFour, titleFive} = props.top_five
+  const handleDeleteClick = (id) => {
+    fetch(`http://localhost:3000/api/v1/top_fives`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+         Accept: "application/json"
+      }
+    })
+    props.delete(id)
+  }
+
+  const {category, titleOne, titleTwo, titleThree, titleFour, titleFive, id} = props.top_five
     return(
       <Card>
         <Card.Title><strong>{category}</strong></Card.Title>
@@ -16,17 +28,18 @@ const TopFive = (props) => {
           <li>{titleFive}</li>
       </ol>
         </Card.Body>
+        <Card.Footer>
+          <button onClick={() => handleDeleteClick(id)}>Remove</button>
+        </Card.Footer>
       </Card>
     )
   }
 
-export default TopFive 
+const mdp = dispatch => {
+  return {
+    delete: (id) => dispatch({ type:"REMOVE_TOP_FIVE", id: id})
+  }
+}
 
-      // <ol>
-      //   <p><strong>{category}</strong></p>
-      //     <li value="1">{titleOne}</li>
-      //     <li>{titleTwo}</li>
-      //     <li>{titleThree}</li>
-      //     <li>{titleFour}</li>
-      //     <li>{titleFive}</li>
-      // </ol>
+export default connect(null,mdp)(TopFive) 
+

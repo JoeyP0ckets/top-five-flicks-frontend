@@ -3,7 +3,7 @@ import Profile from './Profile'
 import MovieShow from '../pages/MovieShow'
 import Search from '../pages/Search'
 import { connect } from 'react-redux'
-// import TopFiveMain from '../pages/TopFiveMain'
+import TopFiveMain from '../pages/TopFiveMain'
 // import SignupForm from './SignupForm'
 
 
@@ -15,7 +15,7 @@ const ContentPane = (props) => {
       {/* <SignupForm/> */}
       <Search />
       <Profile /> 
-      {/* <TopFiveMain/> */}
+      <TopFiveMain/>
       </>}
       
     </div>
