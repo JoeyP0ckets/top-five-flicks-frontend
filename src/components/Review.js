@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import { Container } from 'react-bootstrap'
  
 
 const Review = (props) => {
@@ -17,18 +18,19 @@ const Review = (props) => {
 
   let {title, acting, art_direction, cinematography, directing, soundtrack, rating, id} = props.review
   return(
-    <>
+    <Container>
       <ul>
-        <h5>{title}</h5>
-        <p><strong>Directing</strong>: {directing}</p>
-        <p><strong>Acting</strong>: {acting}</p>
-        <p><strong>Cinematography</strong>: {cinematography}</p>
-        <p><strong>Art Direction</strong>: {art_direction}</p>
-        <p><strong>Soundtrack/Score</strong>: {soundtrack}</p>
-        <p><strong>Flicks Rating: {rating}/5</strong></p>
+        <h5 style={{ color: 'white' }}>{title}</h5>
+        <p style={{ color: 'white' }}><strong>Directing</strong>: {directing}</p>
+        <p style={{ color: 'white' }}><strong>Acting</strong>: {acting}</p>
+        <p style={{ color: 'white' }}><strong>Cinematography</strong>: {cinematography}</p>
+        <p style={{ color: 'white' }}><strong>Art Direction</strong>: {art_direction}</p>
+        <p style={{ color: 'white' }}><strong>Soundtrack/Score</strong>: {soundtrack}</p>
+        <p style={{ color: 'white' }}><strong>Your Rating: {rating}/5</strong></p>
+        <button onClick={() => deleteReview(id)}>Cut Review</button>
       </ul>
-      <button onClick={() => deleteReview(id)}>Cut Review</button>
-    </>
+      
+    </Container>
   )
 }
 

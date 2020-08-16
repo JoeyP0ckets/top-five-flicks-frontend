@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -41,6 +41,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  
+}
+
+.app-container {
+  background-color: black
+
+} 
+
+.search-container {
+  background-image: url(https://images.unsplash.com/photo-1514306191717-452ec28c7814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)
+  
 }
 
 

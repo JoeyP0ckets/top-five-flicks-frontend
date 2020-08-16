@@ -17,9 +17,11 @@ const MovieContainer = (props) => {
     )
   }
   return(
-    <Container>
-      {renderMovieCards()}
-    </Container>
+    <div className="movie-container">
+      <Container >
+        {renderMovieCards()}
+      </Container>
+    </div>
   )
 }
 const msp = state => {

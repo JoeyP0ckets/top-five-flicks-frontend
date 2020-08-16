@@ -22,7 +22,7 @@ const Watchlist = (props) => {
   
   return(
     <div className="sticky-bottom">
-      <h2>{props.user.username}'s Watchlist</h2>
+      <h2 style={{ color: 'white' }}>{props.user.username}'s Watchlist</h2>
     <Container>
        {renderWatchlistCards()}
     </Container>

@@ -3,8 +3,9 @@ import {Card, CardImg} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 
+
 const WatchlistCard = (props) => {
-  // console.log(props)
+  console.log(props)
 
   const deleteFromWatchlist = (id) => {
     fetch(`http://localhost:3000/api/v1/watchlist_movies/${id}`, {
@@ -17,14 +18,15 @@ const WatchlistCard = (props) => {
     props.delete(id)
   } 
   return(
-    <Card style={{ width: '10rem'}} className="box">
+    <Card style={{ width: '10rem'}} className="box" bg={"Dark".toLowerCase()} text="light">
       <CardImg src={props.movie.poster} alt={props.movie.title}/>
-      <Card.Title>{props.movie.title}</Card.Title>
       <Card.Body>
-        {props.movie.year}
-        <p><button onClick={() => deleteFromWatchlist(props.movie.id)}>Remove</button></p>
+        <Card.Title>
+          <p text="fluid">{props.movie.title}</p>
+          <p><button onClick={() => deleteFromWatchlist(props.movie.id)}>Remove</button></p>
+        </Card.Title>
       </Card.Body>
-
+      
     </Card>
   )
 }

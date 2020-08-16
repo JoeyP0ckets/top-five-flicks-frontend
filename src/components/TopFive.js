@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 const TopFive = (props) => {
 
   const handleDeleteClick = (id) => {
-    fetch(`http://localhost:3000/api/v1/top_fives`, {
+    fetch(`http://localhost:3000/api/v1/top_fives/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -13,12 +13,13 @@ const TopFive = (props) => {
       }
     })
     props.delete(id)
+    props.deleteFromMain(id)
   }
 
   const {category, titleOne, titleTwo, titleThree, titleFour, titleFive, id} = props.top_five
     return(
-      <Card>
-        <Card.Title><strong>{category}</strong></Card.Title>
+      <Card style={{ width: '18rem'}} className="box" bg={"Dark".toLowerCase()} text="light">
+        <Card.Header><strong>{category}</strong></Card.Header>
         <Card.Body>
         <ol>
           <li value="1">{titleOne}</li>
@@ -37,7 +38,8 @@ const TopFive = (props) => {
 
 const mdp = dispatch => {
   return {
-    delete: (id) => dispatch({ type:"REMOVE_TOP_FIVE", id: id})
+    delete: (id) => dispatch({ type:"REMOVE_TOP_FIVE", id: id}),
+    deleteFromMain: (id) => dispatch({ type:"REMOVE_MAIN_TOP", id: id})
   }
 }
 

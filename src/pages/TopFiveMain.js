@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux'
 import TopFiveCard from '../containers/TopFiveCard'
+import {Container} from 'react-bootstrap'
 
 class TopFive extends React.Component {
 
@@ -25,9 +26,9 @@ class TopFive extends React.Component {
   
   render() {
     return(
-      <div>
+      <Container>
         {this.props.topFives ? this.renderTopFiveCards() : "No Top Fives"}
-      </div>
+      </Container>
     )
   }
 }

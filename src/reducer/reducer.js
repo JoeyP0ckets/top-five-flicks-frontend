@@ -34,6 +34,9 @@ const reducer = (prevState=initialState, action) => {
       return {...prevState, topFives: action.allFives}
     case "ADD_MAIN_TOP_FIVE":
       return {...prevState, topFives: [...prevState.topFives, action.newTopFive]}
+    case "REMOVE_MAIN_TOP": 
+      let newAllFiveArray = prevState.topFives.filter(top_five => top_five.id !== action.id)
+      return {...prevState, topFives: newAllFiveArray}
     case "REMOVE_FROM_WATCHLIST":
       let newWatchlistArray = prevState.user.watchlist.watchlist_movies.filter(movie => movie.id !== action.id)
       return {...prevState, user: {...prevState.user, watchlist: {...prevState.user.watchlist, watchlist_movies: newWatchlistArray}}}

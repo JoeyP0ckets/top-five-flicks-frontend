@@ -26,7 +26,7 @@ const TopFiveContainer = (props) => {
   
   return(
     <div>
-        <h1>Top Fives</h1>
+        <h1 style= {{ color: "white"}}>Top Fives</h1>
       <Container>
         {renderTopFive()}
         {isToggled ? <TopFiveForm/> : null}
