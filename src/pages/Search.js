@@ -1,8 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
-// import * as action from "../actionCreators/actionCreator"
 import MovieContainer from "../containers/MovieContainer"
-// import { Container } from "react-bootstrap"
+
 
 class Search extends React.Component {
   
@@ -10,7 +9,7 @@ class Search extends React.Component {
   searchByTitle = e => {
     e.preventDefault() 
     const title = e.target.title.value.replace(" ", "+")
-    fetch(`http://www.omdbapi.com/?s=${title}&apikey=`)
+    fetch(`http://www.omdbapi.com/?s=${title}&apikey=4d6b4f28`)
       .then(resp => resp.json())
       .then(searchedData => this.props.filteredSearch(searchedData))
       e.target.reset()

@@ -7,7 +7,7 @@ const MovieCard = (props) => {
   // console.log(props)
 
   const clickMovieDetails = (imdbID) => {
-    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=`)
+    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=4d6b4f28`)
       .then(resp => resp.json())
       .then(movie => props.renderMovieDetails(movie))
     }
