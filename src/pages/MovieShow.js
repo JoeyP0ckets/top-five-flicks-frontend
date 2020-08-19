@@ -1,18 +1,20 @@
 import React,{useState} from "react"
-import {Container, Row, Col} from "react-bootstrap"
+import {Row, Col, Button} from "react-bootstrap"
 import {connect} from "react-redux"
 import ReviewForm from '../components/ReviewForm'
 
 
 const MovieShow = (props) => {
-  console.log(props.selectedMovie)
+  // console.log(props.selectedMovie)
 
   const [isToggled, setToggled] = useState(false)
 
   const toggleReview = () => setToggled(!isToggled)
   
   const goBack = () => {
+    // props.clearSearch()
     props.unselectMovie()
+    
   }
 
   const addToWatchlist = (selectedMovie) => {
@@ -22,7 +24,7 @@ const MovieShow = (props) => {
       poster: selectedMovie.Poster,
       title: selectedMovie.Title,
       year: selectedMovie.Year,
-      watchlist_id: 75
+      watchlist_id: props.user.watchlist.id
     }
     alert("Movie Added to Watchlist!")
     fetch(`http://localhost:3000/api/v1/watchlist_movies`, {
@@ -41,34 +43,40 @@ const MovieShow = (props) => {
   }
     const {Director, Title, Poster, Plot, Actors, Rated, Genre, Released, Runtime, Writer} = props.selectedMovie
   return(
-    <Container fluid>
-    <h1>{Title}</h1>
+    <div className="movie-container">
+      <br></br>
+    <h1 className="review-text">{Title}</h1>
+    <br></br>
      <Row>
-      <Col><img src={Poster} alt="None"/></Col>
-      <Col>
-        <h5 align="left"><strong>Director:</strong> {Director}</h5>
-        <h5 align="left"><strong>Writer:</strong> {Writer}</h5>
-        <h5 align="left"><strong>Genre:</strong> {Genre}</h5>
-        <h5 align="left"><strong>Plot:</strong> {Plot}</h5>
-        <h5 align="left"><strong>Cast:</strong> {Actors}</h5>
-        <h5 align="left"><strong>Release Date:</strong> {Released}</h5>
-        <h5 align="left"><strong>Runtime:</strong> {Runtime}</h5> 
-        <h5 align="left"><strong>Rated:</strong> {Rated}</h5>
+      <Col><img className="poster-image" src={Poster} alt="None"/></Col>
+      <Col className="poster-show">
+      <br></br>
+        <h5 className="review-text" align="left" ><strong>Director:</strong> {Director}</h5>
+        <h5 align="left" className="review-text" ><strong>Writer:</strong> {Writer}</h5>
+        <h5 align="left" className="review-text" ><strong>Genre:</strong> {Genre}</h5>
+        <h5 align="left" className="review-text" ><strong>Plot:</strong> {Plot}</h5>
+        <h5 align="left" className="review-text" ><strong>Cast:</strong> {Actors}</h5>
+        <h5 align="left" className="review-text" ><strong>Release Date:</strong> {Released}</h5>
+        <h5 align="left" className="review-text" ><strong>Runtime:</strong> {Runtime}</h5> 
+        <h5 align="left" className="review-text" ><strong>Rated:</strong> {Rated}</h5>
       </Col>
     </Row>
-      <button onClick={goBack}>Back to Search</button>
-      <button onClick={() => addToWatchlist(props.selectedMovie)}>Add To WatchList</button>
-      <button onClick={() => toggleReview()}>Write a Review</button>
+    <br></br>
+    <br></br>
+      <Button variant="dark" onClick={goBack}>Back to Search</Button>&nbsp;&nbsp;&nbsp;
+      <Button variant="dark" onClick={() => addToWatchlist(props.selectedMovie)}>Add To WatchList</Button>&nbsp;&nbsp;&nbsp;
+      <Button variant="dark" onClick={() => toggleReview()}>Write a Review</Button>&nbsp;&nbsp;&nbsp;
     <>
     {isToggled ? <ReviewForm/> : null}
     </>
-    </Container>
+   </div> 
   )
 }
 
 const msp = state => {
   return {
-    selectedMovie: state.selectedMovie
+    selectedMovie: state.selectedMovie,
+    user: state.user
   }
 }
 

@@ -26,12 +26,14 @@ const TopFiveContainer = (props) => {
   
   return(
     <div>
-        <h1 style= {{ color: "white"}}>Top Fives</h1>
-      <Container>
+        <h1 className="review-text">Top Fives</h1>
+      <Container className="topfive-profile-container">
         {renderTopFive()}
         {isToggled ? <TopFiveForm/> : null}
       </Container>
-      <Button onClick={() => toggleTopFiveReview()}>Create Top Five</Button>
+      <br></br>
+      <br></br>
+      <Button variant="info" onClick={() => toggleTopFiveReview()}>Create Top Five</Button>
     </div>
   )
 }

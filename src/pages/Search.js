@@ -10,7 +10,7 @@ class Search extends React.Component {
   searchByTitle = e => {
     e.preventDefault() 
     const title = e.target.title.value.replace(" ", "+")
-    fetch(`http://www.omdbapi.com/?s=${title}&apikey=4d6b4f28`)
+    fetch(`http://www.omdbapi.com/?s=${title}&apikey=`)
       .then(resp => resp.json())
       .then(searchedData => this.props.filteredSearch(searchedData))
       e.target.reset()
@@ -29,7 +29,7 @@ class Search extends React.Component {
           />
           <button type="submit">Search Movies</button>
         </form>
-        {this.props.searchedOmdb ? <MovieContainer /> : "Search Movies!!!"}
+        {this.props.searchedOmdb ? <MovieContainer /> : null }
       </div>
     )
   }

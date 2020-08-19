@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { Image, Row, Col} from 'react-bootstrap'
 
 
+
 class Profile extends React.Component{
   
   componentDidMount() {
@@ -14,21 +15,23 @@ class Profile extends React.Component{
   }
   
    fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/users/77`)
+    fetch(`http://localhost:3000/api/v1/users/${this.props.user.id}`)
       .then(resp => resp.json())
-      .then(userData => this.props.renderUser(userData) )
+      .then(userData => this.props.loginUser(userData) )
    }
   
   
   render() {
-    // console.log(this.props.user)
+    console.log(this.props.user)
     const {user} = this.props
   return(
     <div>
-      <h2 style={{ color: 'white' }}>Welcome {user.username}</h2>
+      <br></br>
       <Row>
        <Col xs={6} md={4}>
         <Image src="https://www.nme.com/wp-content/uploads/2018/07/Stanley-Kubrick-2001-A-Space-Odyssey-696x442.jpg" roundedCircle />
+        <br></br>
+        <h2 className="review-text">STARRING:   {user.username}</h2>
        </Col>
        <Col>
         {user.top_fives ? <TopFiveContainer /> : null}
@@ -36,6 +39,7 @@ class Profile extends React.Component{
       </Row>
       {user.reviews ? <ReviewContainer /> : null}
       {user.watchlist ? <Watchlist /> : null}
+
     </div>
   )
  }
@@ -49,7 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return{
-    renderUser: (user) => dispatch(action.renderUser(user))
+    loginUser: (user) => dispatch(action.loginUser(user))
   }
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import {Card, CardImg} from 'react-bootstrap'
+import {Card, CardImg, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 
@@ -22,8 +22,8 @@ const WatchlistCard = (props) => {
       <CardImg src={props.movie.poster} alt={props.movie.title}/>
       <Card.Body>
         <Card.Title>
-          <p text="fluid">{props.movie.title}</p>
-          <p><button onClick={() => deleteFromWatchlist(props.movie.id)}>Remove</button></p>
+          <p className="review-text" text="fluid">{props.movie.title}</p>
+          <p><Button variant="info" onClick={() => deleteFromWatchlist(props.movie.id)}>Remove</Button></p>
         </Card.Title>
       </Card.Body>
       

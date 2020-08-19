@@ -17,9 +17,9 @@ const ReviewContainer = (props) => {
     }
   }
   return(
-    <div style={{ borderColor: "white"}}>
-      <h2 style={{ color: 'white' }}>Reviews</h2>
-      <Container>
+    <div >
+      <h2 className="review-title">Reviews</h2>
+      <Container className="review-container">
         {renderReviews()}
       </Container>
     </div>

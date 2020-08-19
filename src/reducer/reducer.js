@@ -4,12 +4,13 @@ const initialState = {
   user: {},
   topFives: [],
   searchedOMDB: [],
-  selectedMovie: null
+  selectedMovie: null,
+  starRating: null
 }
 
 const reducer = (prevState=initialState, action) => {
   switch(action.type) {
-    case "RENDER_USER":
+    case "LOGIN_USER":
       return {...prevState, user: action.payload.value}
     case "SEARCHED_OMDB":
       return {...prevState, searchedOmdb: action.searchedOmdb}
@@ -30,6 +31,8 @@ const reducer = (prevState=initialState, action) => {
                     action.newWatchlistMovie]}}}
     case "DESELECT_MOVIE":
       return {...prevState, selectedMovie: null}
+    case "RENDER_STAR_RATING":
+      return {...prevState, starRating: action.newValue}
     case "RENDER_TOP_FIVES":
       return {...prevState, topFives: action.allFives}
     case "ADD_MAIN_TOP_FIVE":

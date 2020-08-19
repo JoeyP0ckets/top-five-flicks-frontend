@@ -7,14 +7,14 @@ const MovieCard = (props) => {
   // console.log(props)
 
   const clickMovieDetails = (imdbID) => {
-    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=4d6b4f28`)
+    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=`)
       .then(resp => resp.json())
       .then(movie => props.renderMovieDetails(movie))
     }
   
   return(
-    <Card style={{ width: '18rem'}} className="box">
-      <CardImg src={props.movie.Poster} alt={props.movie.Title}/>
+    <Card style={{ width: '16rem'}} className="box" bg={"Dark".toLowerCase()} text="light">
+      <CardImg src={props.movie.Poster} alt={props.movie.title}/>
       <Card.Title>{props.movie.Title}</Card.Title>
       <Card.Body>{props.movie.Year}</Card.Body>
       <Card.Footer><button onClick={()=>clickMovieDetails(props.movie.imdbID)}>Details</button></Card.Footer>

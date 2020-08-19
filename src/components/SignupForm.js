@@ -1,8 +1,8 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import {connect } from 'react-redux'
 
-const Signupform = () => {
+
+const SignupForm = () => {
 
   const handleSignupSubmit = e => {
     e.preventDefault()
@@ -27,14 +27,14 @@ const Signupform = () => {
   
   return(
     <Form onSubmit={e => handleSignupSubmit(e)}>
-      <Form.Label>Sign Up</Form.Label>
        <Form.Group>
         <Form.Control type="text" placeholder="Username" name="username"/>  
-        <Form.Control type="text" placeholder="Password" name="password"/>   
+        <Form.Control type="text" placeholder="Password" name="password"/>
+        <br></br>   
         <Button type="submit">Signup</Button>
        </Form.Group>
     </Form>
   )
 }
 
-export default Signupform
+export default SignupForm

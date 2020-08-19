@@ -21,8 +21,9 @@ const Watchlist = (props) => {
 }
   
   return(
-    <div className="sticky-bottom">
-      <h2 style={{ color: 'white' }}>{props.user.username}'s Watchlist</h2>
+    
+    <div className="watchlist-container" >
+      <h2 className="navbar-title">{props.user.username}'s Watchlist</h2>
     <Container>
        {renderWatchlistCards()}
     </Container>

@@ -13,9 +13,9 @@ class TopFiveForm extends React.Component {
       titleThree: e.target.titleThree.value,
       titleFour: e.target.titleFour.value,
       titleFive: e.target.titleFive.value,
-      user_id: 77
+      user_id: this.props.user.id
     }
-    alert("Top 5 Succesfully Created")
+    this.alertMe()
     // console.log(top_five)
     fetch(`http://localhost:3000/api/v1/top_fives`, {
       method: 'POST',
@@ -30,8 +30,6 @@ class TopFiveForm extends React.Component {
       .then(resp => resp.json())
       .then(newTopFive => this.props.renderTopFive(newTopFive))
       .then(newTopFive => this.props.addToAllTopFives(newTopFive))
-      // console.log(newTopFive)
-      // this.props.addToAllTopFives(newTopFive)
       e.target.reset()
       
 }
@@ -39,7 +37,7 @@ class TopFiveForm extends React.Component {
 alertMe() {
   return <div class="alert alert-success alert-dismissible fade show">
   <strong>Success!</strong> Your message has been sent successfully.
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>
 }
   
@@ -48,21 +46,29 @@ alertMe() {
       <Container>
         <Form onSubmit={e => this.handleTopFiveSubmit(e)}>
           <Form.Group>
-            <Form.Label>Top 5...</Form.Label>
+            <Form.Label className="review-text">Top 5...</Form.Label>
               <Form.Control type="text" name="category" placeholder="Example-Best 80's Movies"/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Enter 5 Flicks</Form.Label>
-            <Form.Control type="text" name="titleOne" placeholder="Pick Your Flick"/>
-            <Form.Control type="text" name="titleTwo" placeholder="Pick Your Flick"/>
-            <Form.Control type="text" name="titleThree" placeholder="Pick Your Flick"/>
-            <Form.Control type="text" name="titleFour" placeholder="Pick Your Flick"/>
-            <Form.Control type="text" name="titleFive" placeholder="Pick Your Flick"/>
+            <Form.Label className="review-text">Enter 5 Flicks</Form.Label>
+            <h3 className="review-text"> Flick 1</h3><Form.Control type="text" name="titleOne" placeholder="Pick Your Flick"/>
+            <h3 className="review-text"> Flick 2</h3><Form.Control type="text" name="titleTwo" placeholder="Pick Your Flick"/>
+            <h3 className="review-text"> Flick 3</h3><Form.Control type="text" name="titleThree" placeholder="Pick Your Flick"/>
+            <h3 className="review-text"> Flick 4</h3><Form.Control type="text" name="titleFour" placeholder="Pick Your Flick"/>
+            <h3 className="review-text"> Flick 5</h3><Form.Control type="text" name="titleFive" placeholder="Pick Your Flick"/>
           </Form.Group>
-          <Button type="submit">Submit</Button>
+          <br></br>
+          <br></br>
+          <Button variant="success" type="submit">Submit</Button>
         </Form>
       </Container>
     )
+  }
+}
+
+const msp = state => {
+  return {
+    user: state.user
   }
 }
 
@@ -73,4 +79,4 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(null,mdp)(TopFiveForm)
+export default connect(msp,mdp)(TopFiveForm)

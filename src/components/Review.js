@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Container } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
  
 
 const Review = (props) => {
@@ -18,19 +18,20 @@ const Review = (props) => {
 
   let {title, acting, art_direction, cinematography, directing, soundtrack, rating, id} = props.review
   return(
-    <Container>
+    <div>
+      <br></br>
       <ul>
-        <h5 style={{ color: 'white' }}>{title}</h5>
-        <p style={{ color: 'white' }}><strong>Directing</strong>: {directing}</p>
-        <p style={{ color: 'white' }}><strong>Acting</strong>: {acting}</p>
-        <p style={{ color: 'white' }}><strong>Cinematography</strong>: {cinematography}</p>
-        <p style={{ color: 'white' }}><strong>Art Direction</strong>: {art_direction}</p>
-        <p style={{ color: 'white' }}><strong>Soundtrack/Score</strong>: {soundtrack}</p>
-        <p style={{ color: 'white' }}><strong>Your Rating: {rating}/5</strong></p>
-        <button onClick={() => deleteReview(id)}>Cut Review</button>
+        <h5 className="review-title" >{title}</h5>
+        <p className="review-title"><strong>Directing</strong>: {directing}</p>
+        <p className="review-title"><strong>Acting</strong>: {acting}</p>
+        <p className="review-title"><strong>Cinematography</strong>: {cinematography}</p>
+        <p className="review-title"><strong>Art Direction</strong>: {art_direction}</p>
+        <p className="review-title"><strong>Soundtrack/Score</strong>: {soundtrack}</p>
+        <p className="review-title"><strong>Your Rating: {rating}/5</strong></p>
+        <Button variant="info" onClick={() => deleteReview(id)}>Cut Review</Button>
       </ul>
       
-    </Container>
+    </div>
   )
 }
 

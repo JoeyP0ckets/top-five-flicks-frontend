@@ -10,28 +10,26 @@ import Profile from './Profile'
 import TopFiveMain from '../pages/TopFiveMain'
 import { connect } from 'react-redux'
 import MovieShow from '../pages/MovieShow'
+import LoginSignup from '../pages/LoginSignup'
+
 
 
 const Navbar = (props) => {
   
   return(
-    <div>
-      <h1 style={{ color: 'lightgreen' }}>Top Five Flicks</h1>
+    <div className="navbar-container">
+      <h1 className="navbar-title" style={{ color: "red"}}>Top Five Flicks</h1>
       <Router>
       <div>
-        <Link to="/">Profile</Link>
-        <Link to="/Search">Search</Link>
-        <Link to="/TopFives">Top Five</Link>
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
+        {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp;
+        {props.user ? <Link to="/">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
+        {props.user ? <Link to="/Search">Search</Link> : null}&nbsp;&nbsp;&nbsp;
+        {props.user ? <Link to="/TopFives">Top Five</Link> : null}&nbsp;&nbsp;&nbsp;
+        {props.user ? <Link to="/Logout">Logout</Link> : null}
+       
         <Switch>
           <Route exact path="/">
-            <Profile/>
+            {props.user ? <Profile/> : <LoginSignup/>}  
           </Route>
           <Route path="/Search">
             {props.selectedMovie ? <MovieShow/> : <Search/>}
@@ -48,7 +46,8 @@ const Navbar = (props) => {
   
 const msp = state => {
   return {
-    selectedMovie: state.selectedMovie
+    selectedMovie: state.selectedMovie,
+    user: state.user
   }
 }
 

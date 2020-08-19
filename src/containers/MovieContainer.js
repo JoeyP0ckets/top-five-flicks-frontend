@@ -5,7 +5,7 @@ import {Container} from 'react-bootstrap'
 
 
 const MovieContainer = (props) => {
-  console.log(props.searchedOmdb)
+  // console.log(props.searchedOmdb)
   
   
   const renderMovieCards = () => {
