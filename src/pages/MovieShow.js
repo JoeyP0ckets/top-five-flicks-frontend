@@ -5,14 +5,12 @@ import ReviewForm from '../components/ReviewForm'
 
 
 const MovieShow = (props) => {
-  // console.log(props.selectedMovie)
 
   const [isToggled, setToggled] = useState(false)
 
   const toggleReview = () => setToggled(!isToggled)
   
   const goBack = () => {
-    // props.clearSearch()
     props.unselectMovie()
     
   }
