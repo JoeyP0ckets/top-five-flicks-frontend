@@ -1,8 +1,9 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { Form, Button } from 'react-bootstrap'
+import * as action from '../actionCreators/actionCreator'
 
-
-const SignupForm = () => {
+const SignupForm = (props) => {
 
   const handleSignupSubmit = e => {
     e.preventDefault()
@@ -21,7 +22,9 @@ const SignupForm = () => {
       })
     })
       .then(resp => resp.json())
-      .then(newUser=> console.log(newUser))
+      .then((user) => {
+        props.loginUser(user)
+      })
       e.target.reset()
   }
   
@@ -37,4 +40,10 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+const mdp = dispatch => {
+  return {
+    loginUser: (user) => dispatch(action.loginUser(user))
+  }
+}
+
+export default connect(null,mdp)(SignupForm)
