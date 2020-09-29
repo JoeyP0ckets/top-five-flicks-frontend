@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Top Five Flicks
 
-## Available Scripts
+Top Five Flicks is a React app used search and review movies.  Can create custom watchlists and write Top Five recommendations to share with other cinephiles.
 
-In the project directory, you can run:
+## Prerequisites
 
-### `yarn start`
+Before you begin, ensure you have met the following requirements:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-Installed the latest version of React and Ruby
+-Have a <Windows/Linux/Mac> machine. 
+-Have Postgresql
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installing Top Five Flicks
 
-### `yarn test`
+  1. Clone this repository to you local machine.
+  2. Once cloned, navigate to the base folder of this repositry.
+  3. Run $ bundle install in the terminal to install required gems.
+  4. Run $ rails db:setup to set up the database.
+  5. Run $ rails s to start application.  
+  6. You can now run the app on localhost:3000
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ## Application Structure and Rules
+ 
+ Login
+ * Users may create an account by Signing Up with a username and password. 
+ * Username and password must be provided and must be unique among users. 
+ * Once a user has signed up they may sign in with username/password combo they provided.
 
-### `yarn build`
+## Features
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Users can search for movies from the OMDB database.
+* Movie details can be viewed including director, year, actors, and plot.  
+* Users can add a movie to their personal watchlist.
+* Users can write in-depth movie reviews for any film they want. 
+* Users can create Top Five lists that take a genre, accepts five movie    recommendations, and is posted to the Top Five Main page for other users to peruse. 
+* All user-created content is shown on their profile for easy access.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

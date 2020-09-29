@@ -11,7 +11,6 @@ const initialState = {
 const reducer = (prevState=initialState, action) => {
   switch(action.type) {
     case "LOGIN_USER":
-      debugger
       return {...prevState, user: action.payload.value}
     case "SEARCHED_OMDB":
       return {...prevState, searchedOmdb: action.searchedOmdb}
